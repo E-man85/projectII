@@ -14,7 +14,7 @@
 
 -Análise dos dados que serão utilizados no modelo.
 
-## Dados 
+## Data
 
 Os dados recolhidos para a elaboração deste trabalho são três ficheiros em formato .csv:
 
@@ -50,6 +50,7 @@ Foi feita a exploração dos 3 ficheiros de dados, que está disponível em [dat
 
 <details>
 <summary><span >Ver product.csv understanding </span></summary>
+>
   
 O ficheiro tem 10 colunas com 699 registos.
 
@@ -91,6 +92,7 @@ exemplo
 
 <details>
 <summary><span>Ver cities.csv understanding</span></summary>
+>
 
 O ficheiro tem 6 colunas com 63 registos.
 
@@ -119,8 +121,7 @@ Coluna de um valor exclusivo, do tipo 'object' que refere o pais "TURKEY" .
 
 Coluna com dados do tipo 'object' que refere o nome da cidade.
 
-A configuração usada neste ambiente não está de acordo com a codificação dos caracteres do ficheiro
-Por essa razão  dados alguns nomes das cidades têm problemas de visualização:
+A configuração usada neste ambiente não está de acordo com a codificação dos caracteres do ficheiro, e  por essa razão alguns nomes das cidades têm problemas de visualização:
 
 ex: 'Sanl?urfa', 'Adapazar?'
 
@@ -132,6 +133,7 @@ ex: 'Sanl?urfa', 'Adapazar?'
 
 <details>
 <summary><span >Ver sales.csv understanding</span></summary>
+>
 
 O ficheiro tem 14 colunas com 8886058 registos.
 
@@ -210,7 +212,7 @@ Coluna do tipo 'object', de  valores distintos ['PR04', 'PR02', 'PR01', 'PR03'],
 
 </details>
 
-## Diagrama da relação entre tabelas
+## Raw diagram
 
 <img src="https://raw.githubusercontent.com/E-man85/projectII/main/images/diagram_turkiye_stores.png " alt="Data Schema" width="900" height="400">
 
@@ -232,10 +234,11 @@ O objetivo foi tratar valores ausentes de cada variável ter o maximo de dados d
 
 <details>
 <summary><span >Ver dimProduct preparation</span></summary>
+>
 
 -***cluster_id***
 
-A Coluna apresenta 50 valores NaN, e foi usado um modelo RandomForestClassifier, para valores em falta. 
+A Coluna apresenta 50 valores NaN, e foi usado um modelo RandomForestClassifier, para gerar valores em falta. 
 
 -***product_width, product_depth, product_length***
 
@@ -249,6 +252,7 @@ Foi criado um novo ficheiro dimProduct.csv, sem valores NaN e exportado para [da
 
 <details>
 <summary><span >Ver dimCities preparation</span></summary>
+>
 
 -***city_code***
 
@@ -258,7 +262,7 @@ Criamos um dicionário com os nomes em codificação correta e foi feta a substi
 
 -***latitude, longitude***
 
-Para visualização e analise, foram acrescentadas duas novas variáveis de localização.
+Para visualização e analise, foram acrescentadas duas novas variáveis, as coordenadas geográficas latitude e longitude.
 
 Foi criado um novo ficheiro dimCities.csv e exportado para [dataStaging](https://github.com/E-man85/projectII/blob/main/dataStaging/dimCities.csv).
 </details>
@@ -267,6 +271,7 @@ Foi criado um novo ficheiro dimCities.csv e exportado para [dataStaging](https:/
 
 <details>
 <summary><span >Ver factSales preparation</span></summary>
+>
 
 -***sales***
 
@@ -286,7 +291,7 @@ Foi criado um novo ficheiro factSales.csv e exportado para [dataStaging](https:/
 
 </details>
 
-### Novo diagrama das tabelas dimensão e fatos 
+### Entity Relationship (ER) Diagram
 
 <img src="https://raw.githubusercontent.com/E-man85/projectII/main/images/diagram_turkiye_clothes_dim_fact.png" alt="Data Schema" width="900" height="400">
 
@@ -299,7 +304,7 @@ Foi criado um novo ficheiro flatTable.csv e exportado para [dataStaging](https:/
 
 ## Data Exploration
 
-Foi feita uma exploração dos dados consultada em .....
+A exploração de dados pode ser consultada aqui.
 
 ## Data Preparation- Revenue Forecast
 
@@ -309,6 +314,7 @@ Nesta preparação o objetivo é disponibilizar os dados em granularidade semana
 
 <details>
 <summary><span >Ver grainWeekMultipleVariables preparation</span></summary>
+>
 
 -***group by day***
 
@@ -328,7 +334,7 @@ Fizemos um novo agrupamento em granularidade semanal.
 
 -***season***
 
-Criamos uma nova varíavel season, relativo às estações do ano
+Criamos uma nova varíavel season, relativo às estações do ano.
 
 -***holiday***
 
@@ -346,13 +352,13 @@ Com os dados na granularidade desejada e com variáveis exógenas, foi criado um
 
 ### Simple forecasting methods
 
-Foram criados vários modelos, simples que servem de base para a seleção de modelos.
+Foram criados vários modelos simples, que servem de referência para a seleção de modelos.
 
 [simpleMethods](https://github.com/E-man85/projectII/blob/main/modeling/simpleForecastingMethods.ipynb)
 
 <details>
 <summary><span>Ver simpleMethods modeling</span></summary>
-<>
+>
 
 - Average method
 
@@ -364,7 +370,7 @@ Foram criados vários modelos, simples que servem de base para a seleção de mo
 
 - Average Models
 
-Foram feitas duas exportação de resultados as [previsões](https://github.com/E-man85/projectII/blob/main/dataStaging/resultSimpleMethods.csv) dos vários modelos em dados teste, e as várias métricas da função [accuracy](https://github.com/E-man85/projectII/blob/main/dataStaging/accuracySimpleMethods.csv).
+Foram feitas duas exportação de resultados, as [previsões](https://github.com/E-man85/projectII/blob/main/dataStaging/resultSimpleMethods.csv) dos vários modelos em dados teste, e as várias métricas da função [accuracy](https://github.com/E-man85/projectII/blob/main/dataStaging/accuracySimpleMethods.csv).
 </details>
 
 ### Exponential smoothing
@@ -375,7 +381,7 @@ Fizemos várias previsões com modelos de suavização exponencial.
 
 <details>
 <summary><span>Ver etsModels modeling</span></summary>
-<>
+>
 
 - Simple exponential smoothing
 
@@ -387,7 +393,7 @@ Fizemos várias previsões com modelos de suavização exponencial.
   
 - STLF (Seasonal and Trend decomposition using Loess and Fourier)
 
-Foram feitas duas exportação de resultados as [previsões](https://github.com/E-man85/projectII/blob/main/dataStaging/resultEtsModels.csv) dos vários modelos em dados teste, e as várias métricas da função [accuracy](https://github.com/E-man85/projectII/blob/main/dataStaging/accuracyEtsModels.csv).
+Foram feitas duas exportação de resultados, as [previsões](https://github.com/E-man85/projectII/blob/main/dataStaging/resultEtsModels.csv) dos vários modelos em dados teste, e as várias métricas da função [accuracy](https://github.com/E-man85/projectII/blob/main/dataStaging/accuracyEtsModels.csv).
 </details>
 
 ### Simple Linear Regression
@@ -398,13 +404,13 @@ Usamos a regressão linear para fazer previsões.
 
 <details>
 <summary><span>Ver simpleLinearRegression modeling</span></summary>
-<>
+>
 
 - TSLM (Time Series Linear Model)
 
 - LM (Linear Model)
 
-Foram feitas duas exportação de resultados as [previsões](https://github.com/E-man85/projectII/blob/main/dataStaging/resultSimpleLineaRegressionModels.csv) dos vários modelos em dados teste, e as várias métricas da função [accuracy](https://github.com/E-man85/projectII/blob/main/dataStaging/accuracySimpleLineaRegressionModels.csv).
+Foram feitas duas exportação de resultados, as [previsões](https://github.com/E-man85/projectII/blob/main/dataStaging/resultSimpleLineaRegressionModels.csv) dos vários modelos em dados teste, e as várias métricas da função [accuracy](https://github.com/E-man85/projectII/blob/main/dataStaging/accuracySimpleLineaRegressionModels.csv).
 </details>
 
 ### Auto Arima & Sarima
@@ -415,13 +421,13 @@ Usamos os modelos Auto Arima e Sarima para fazer previsões.
 
 <details>
 <summary><span>Ver AutoArimaSarima modeling</span></summary>
-<>
+>
 
 - AutoArima 
 
 - Sarima
 
-Foram feitas duas exportação de resultados as [previsões](https://github.com/E-man85/projectII/blob/main/dataStaging/resultAutoArimaSarimaModels.csv) dos vários modelos em dados teste, e as várias métricas da função [accuracy](https://github.com/E-man85/projectII/blob/main/dataStaging/accuracyArimaXregModels.csv).
+Foram feitas duas exportação de resultados, as [previsões](https://github.com/E-man85/projectII/blob/main/dataStaging/resultAutoArimaSarimaModels.csv) dos vários modelos em dados teste, e as várias métricas da função [accuracy](https://github.com/E-man85/projectII/blob/main/dataStaging/accuracyArimaXregModels.csv).
 </details>
 
 ### ARIMA (+ XREG)
@@ -436,7 +442,7 @@ Usamos os modelos Arima com variáveis exógenas para gerar previsões.
 
 - Arima (+ XREG)
 
-Foram feitas duas exportação de resultados as [previsões](https://github.com/E-man85/projectII/blob/main/dataStaging/resultArimaXregModels.csv) dos vários modelos em dados teste, e as várias métricas da função [accuracy](https://github.com/E-man85/projectII/blob/main/dataStaging/accuracyArimaXregModels.csv).
+Foram feitas duas exportação de resultados, as [previsões](https://github.com/E-man85/projectII/blob/main/dataStaging/resultArimaXregModels.csv) dos vários modelos em dados teste, e as várias métricas da função [accuracy](https://github.com/E-man85/projectII/blob/main/dataStaging/accuracyArimaXregModels.csv).
 </details>
 
 
@@ -458,9 +464,9 @@ RMSE = sqrt((1/n) * Σ(y_observed - y_predicted)^2)
 
 RMSE mede a dispersão dos erros entre os valores previstos e os valores reais.
 
-Tendo o foco na precisão da previsão o uso da media  RMSE penaliza erros maiores de forma mais significativa, é sensivel a outliers e a grandes desvios, mostrando a sua utilidade quando erros aiores são penalisados de forma desproporcional.
+Tendo o foco na precisão da previsão o uso da media  RMSE penaliza erros maiores de forma mais significativa, é sensivel a outliers e a grandes desvios, mostrando a sua utilidade quando erros maiores são penalisados de forma desproporcional.
 
-Depois de verificado o melhor RMSE para cada loja verificamos o numero de lojas por modelo:
+Depois de verificado o melhor RMSE para cada loja, podemos verificar o numero de lojas por modelo:
 
 | Models | Number Stores|
 |-|-|
